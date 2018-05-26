@@ -23,4 +23,4 @@ class Comment(models.Model):
     author = models.ForeignKey(User)
     
     def __Str__(self):
-        return self.name
+        return self.comments

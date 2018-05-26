@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django_forms_bootstrap',
     'accounts',
     'bugs',
-    'home',
 ]
 
 MIDDLEWARE = [
@@ -126,5 +125,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
