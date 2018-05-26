@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Bug, Comment
+from .models import Bug, BugComment
 
 # Create your views here.
 def all_bugs(request):

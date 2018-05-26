@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-class Bug(models.Model):
+class Feature(models.Model):
     STATUS_CHOICES = (
         ('todo', 'To do'),
         ('doing', 'Doing'),
@@ -17,9 +17,9 @@ class Bug(models.Model):
     def __str__(self):
         return self.name
         
-class BugComment(models.Model):
+class FeatureComment(models.Model):
     comments = models.TextField()
-    bug = models.ForeignKey(Bug)
+    feature = models.ForeignKey(Feature)
     author = models.ForeignKey(User)
     
     def __str__(self):
