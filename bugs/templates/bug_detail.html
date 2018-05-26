@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block content %}
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <h3>{{ bug.title }}</h3>
+        <div class="row">
+            <h4>Stage of development: {{ bug.status }}</h4>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <p>{{ bug.description }}</p>
+                <p><span class="boldtext">Upvotes:</span> {{ bug.upvotes }} </p>
+                <p><span class="boldtext">Views:</span> {{bug.views}}</p>
+                <h5><span class="boldtext">Author: </span>{{ bug.author }}</h5>
+                <a href="{% url 'bugs' %}" class="btn btn-primary">Back</a>
+                <hr>
+            </div>
+        </div>
+        {% if comments %}
+        <div class="row">
+            <h4>Comments <span style="color:black; font-size:15px;">({{ comments_total }})</span></h4>
+        </div>
+        <div>
+            {% for comment in comments %}
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h5>{{ comment.author }}</h5>
+                    <p> {{ comment.description }} </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

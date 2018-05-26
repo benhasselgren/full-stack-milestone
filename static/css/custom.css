@@ -18,3 +18,13 @@ footer {
 .accountform {
     padding-top: 20px;
 }
+
+.comment{
+    padding: 5px;
+    border: 1px solid gray;
+    margin-top: 6px;
+}
+
+.panel-style{
+     margin-top: 20px;   
+}

@@ -12,15 +12,16 @@ class Bug(models.Model):
     description = models.TextField()
     status = models.CharField(max_length=5, choices=STATUS_CHOICES)
     upvotes = models.IntegerField(default=0)
+    views = models.IntegerField(default=0)
     author = models.ForeignKey(User)
     
     def __str__(self):
         return self.name
         
 class BugComment(models.Model):
-    comments = models.TextField()
+    description = models.TextField()
     bug = models.ForeignKey(Bug)
     author = models.ForeignKey(User)
     
     def __str__(self):
-        return self.comments
+        return self.description

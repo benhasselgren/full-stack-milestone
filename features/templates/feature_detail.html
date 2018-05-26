@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block content %}
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <h3>{{ feature.title }}</h3>
+        <div class="row">
+            <h4>Stage of development: {{ feature.status }}</h4>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <p>{{ feature.description }}</p>
+                <p><span class="boldtext">Upvotes:</span> {{ feature.upvotes }} </p>
+                <p><span class="boldtext">Views:</span> {{feature.views}}</p>
+                <h5><span class="boldtext">Author: </span>{{ feature.author }}</h5>
+                <a href="{% url 'features' %}" class="btn btn-default">Back</a>
+                <hr>
+            </div>
+        </div>
+            {% if comments %}
+            <div class="row">
+                <h4>Comments <span style="color:black; font-size:15px;">({{ comments_total }})</span></h4>
+            </div>
+            <div>
+                {% for comment in comments %}
+                <div class="row comment">
+                    <h5>{{ comment.author }}</h5>
+                    <p> {{ comment.description }} </p>
+                </div>
+                <form>
+                    
+                </form>
+                {% endfor %}
+            </div>
+            {% endif %}
+    </div>
+</div>
+{% endblock %}
