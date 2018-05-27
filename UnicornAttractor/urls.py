@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from cart import urls as urls_cart
 from accounts import urls as urls_accounts
+from checkout import urls as urls_checkout
 from bugs import urls as urls_bugs
 from features import urls as urls_features
 from bugs.views import all_bugs
@@ -28,5 +29,6 @@ urlpatterns = [
     url(r'^cart/', include(urls_cart)),
     url(r'^accounts/', include(urls_accounts)),
     url(r'^features/', include(urls_features)),
+    url(r'^checkout/', include(urls_checkout)),
     url(r'^bugs/', include(urls_bugs)),
 ]
