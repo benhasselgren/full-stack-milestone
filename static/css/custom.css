@@ -25,6 +25,21 @@ footer {
     margin-top: 6px;
 }
 
+/*BLOGS/FEATURES*/
+
 .panel-style{
      margin-top: 20px;   
+}
+
+.circle-maker{
+    border-radius: 50%;
+}
+
+.heading-section{
+    margin-bottom: 20px;
+}
+
+.views{
+    padding-top:20px;
+    margin-bottom: 0px;
 }

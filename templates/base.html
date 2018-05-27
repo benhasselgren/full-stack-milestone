@@ -35,6 +35,14 @@
                         <li><a href="{% url 'register' %}">Register</a></li>
                         <li><a href="{% url 'login' %}">Log In</a></li>
                     {% endif %}
+                    <li>
+                        <a href="{% url 'view_cart' %}">
+                            <i class="fa fa-shipping-cart"></i> Cart
+                            {% if feature_count > 0 %}
+                            <label class="badge badge-warning">{{ feature_count }}</label>
+                            {% endif %}
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
