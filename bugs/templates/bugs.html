@@ -21,7 +21,7 @@
                             <div class="col-sm-3">
                                 {% if bug.status == "done" %}
                                 {% else %}
-                                <form method="post" action="{% url 'bugs'%}">
+                                <form method="post" action="{% url 'upvote_bug' bug.id %}">
                                     {% csrf_token %}
                                     <button class="btn btn-success circle-maker" type="submit"><span class="glyphicon glyphicon-ok"></span></button>
                                 </form>

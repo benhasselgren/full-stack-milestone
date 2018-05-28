@@ -8,7 +8,16 @@ def all_bugs(request):
     bugs = Bug.objects.all()
     return render(request, "bugs.html", {'bugs':bugs} )
     
-def upvote_bug(request)
+def upvote_bug(request, pk):
+    """
+    A view that upvotes the selected bug
+    """
+    if request.method == "POST":
+        bug = get_object_or_404(Bug, pk=pk)
+        bug.upvotes += 1
+        bug.save()
+        return redirect('bugs')
+    
     
 def bug_detail(request, pk):
     """
