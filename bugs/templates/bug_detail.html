@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} {% load bootstrap_tags %} {% block content %}
 <div class="row">
     <div class="col-md-12 col-sm-12">
         <h3>{{ bug.title }}</h3>
@@ -19,7 +19,7 @@
         <div class="row">
             <h4>Comments <span style="color:black; font-size:15px;">({{ comments_total }})</span></h4>
         </div>
-        <div>
+        <div class="row">
             {% for comment in comments %}
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -30,6 +30,14 @@
             {% endfor %}
         </div>
         {% endif %}
+        <div class="row">
+            <div class="row">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %} {{ form | as_bootstrap }}
+                    <button type="submit" class="btn btn-info">Add comment</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -10,10 +10,10 @@ class Bug(models.Model):
     )
     name = models.CharField(max_length=254)
     description = models.TextField()
-    status = models.CharField(max_length=5, choices=STATUS_CHOICES)
+    status = models.CharField(max_length=5, choices=STATUS_CHOICES, default="todo")
     upvotes = models.IntegerField(default=0)
     views = models.IntegerField(default=0)
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(User, related_name='created_by')
     
     def __str__(self):
         return self.name

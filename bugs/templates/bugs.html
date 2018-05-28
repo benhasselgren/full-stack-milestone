@@ -11,18 +11,21 @@
                     {% endif %}
                     <div class="panel-heading">Status: {{ bug.status }}</div>
                     <div class="panel-body">
-                        
+
                         <h4 class="card-title">{{ bug.name }}</h4>
-                        <p class="product-description card-text">{{ bug.description|truncatewords:30 }}</p>
+                        <p class="product-description card-text">{{ bug.description|truncatewords:5 }}</p>
                         <div class="row">
                             <div class="col-sm-3">
                                 <p><a href="{% url 'bug_detail' bug.id %}" class="btn btn-primary circle-maker"><span class="glyphicon glyphicon-plus"></span></a></p>
                             </div>
                             <div class="col-sm-3">
+                                {% if bug.status == "done" %}
+                                {% else %}
                                 <form method="post" action="">
                                     {% csrf_token %}
                                     <button class="btn btn-success circle-maker" type="submit"><span class="glyphicon glyphicon-ok"></span></button>
                                 </form>
+                                {% endif %}
                             </div>
                         </div>
 
@@ -33,4 +36,6 @@
             </div>
             {% endfor %}
         </div>
-        {% endblock %}
+    </div>
+</div>
+{% endblock %}

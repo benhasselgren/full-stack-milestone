@@ -1,4 +1,4 @@
 {% extends "base.html" %} {% block content %}
 <p>You are logged in as {{ user.email }} </p>
-
+<a href="{% url 'new_bug' %}"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add Bug</button></a>
 {% endblock %}
