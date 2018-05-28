@@ -11,6 +11,10 @@ footer {
     color: #A9A9A9;
 }
 
+.sign-user-btn{
+    border-radius: 15px;
+}
+
 .icon-bar {
     background-color: #fff;
 }
@@ -42,4 +46,9 @@ footer {
 .views{
     padding-top:20px;
     margin-bottom: 0px;
+}
+
+/*PROFILE*/
+.bug-feature-buttons{
+    text-align: center;
 }

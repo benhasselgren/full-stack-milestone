@@ -4,8 +4,11 @@ from .forms import BugForm, BugCommentForm
 
 # Create your views here.
 def all_bugs(request):
+    
     bugs = Bug.objects.all()
     return render(request, "bugs.html", {'bugs':bugs} )
+    
+def upvote_bug(request)
     
 def bug_detail(request, pk):
     """

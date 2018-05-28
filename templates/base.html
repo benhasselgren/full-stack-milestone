@@ -1,6 +1,7 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +11,9 @@
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    {% block head_js %}
-    {% endblock %}
+    {% block head_js %} {% endblock %}
 </head>
+
 <body>
     <!-- Fixed masthead -->
     <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
@@ -29,34 +30,32 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
-                        <li><a href="{% url 'bugs' %}">Bugs</a></li>
-                        <li><a href="{% url 'features' %}">Features</a></li>
-                        <li><a href="{% url 'profile' %}">Profile</a></li>
-                        <li><a href="{% url 'logout' %}">Log Out</a></li>
-                    {%  else %}
-                        <li><a href="{% url 'register' %}">Register</a></li>
-                        <li><a href="{% url 'login' %}">Log In</a></li>
-                    {% endif %}
+                    <li><a href="{% url 'bugs' %}">Bugs</a></li>
+                    <li><a href="{% url 'features' %}">Features</a></li>
                     <li>
                         <a href="{% url 'view_cart' %}">
-                            <i class="fa fa-shipping-cart"></i> Cart
-                            {% if feature_count > 0 %}
-                            <label class="badge badge-warning">{{ feature_count }}</label>
-                            {% endif %}
+                                <span class="glyphicon glyphicon-shopping-cart"></span> Cart
+                                {% if feature_count > 0 %}
+                                <label class="badge badge-warning">{{ feature_count }}</label>
+                                {% endif %}
                         </a>
                     </li>
+                    <li><a href="{% url 'profile' %}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                    <li><button type="button" class="btn btn-default navbar-btn btn-sm sign-user-btn"><a href="{% url 'logout' %}">Log Out</a></button></li>
+                    {% else %}
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                    <li><a href="{% url 'login' %}">Log In</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
     </nav>
     {% if messages %}
-        <div class="alert alert-success">
-            <div class="messages">
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
-            </div>
+    <div class="alert alert-success">
+        <div class="messages">
+            {% for message in messages %} {{ message }} {% endfor %}
         </div>
+    </div>
     {% endif %}
     <div class="container">
         {% block content %} {% endblock %}
@@ -67,4 +66,5 @@
         </div>
     </footer>
 </body>
+
 </html>

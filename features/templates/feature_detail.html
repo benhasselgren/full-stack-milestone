@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} {% load bootstrap_tags %} {% block content %}
 <div class="row">
     <div class="col-md-12 col-sm-12">
         <h3>{{ feature.title }}</h3>
@@ -15,22 +15,27 @@
                 <hr>
             </div>
         </div>
-            {% if comments %}
-            <div class="row">
-                <h4>Comments <span style="color:black; font-size:15px;">({{ comments_total }})</span></h4>
-            </div>
-            <div>
-                {% for comment in comments %}
-                <div class="row comment">
+        {% if comments %}
+        <div class="row">
+            <h4>Comments <span style="color:black; font-size:15px;">({{ comments_total }})</span></h4>
+        </div>
+         <div class="row">
+            {% for comment in comments %}
+            <div class="panel panel-default">
+                <div class="panel-body">
                     <h5>{{ comment.author }}</h5>
                     <p> {{ comment.description }} </p>
                 </div>
-                <form>
-                    
-                </form>
-                {% endfor %}
             </div>
-            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div class="row">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %} {{ form | as_bootstrap }}
+                <button type="submit" class="btn btn-info">Add comment</button>
+            </form>
+        </div>
     </div>
 </div>
 {% endblock %}
