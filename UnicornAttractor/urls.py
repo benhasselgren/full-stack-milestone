@@ -17,16 +17,20 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from cart import urls as urls_cart
 from accounts import urls as urls_accounts
+from home import urls as urls_home
 from checkout import urls as urls_checkout
+from graph import urls as urls_graphs
 from bugs import urls as urls_bugs
 from features import urls as urls_features
-from bugs.views import all_bugs
+from home.views import index
 from django.views import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', all_bugs, name='index'),
+    url(r'^$', index, name='index'),
     url(r'^cart/', include(urls_cart)),
+    url(r'^home/', include(urls_home)),
+    url(r'^graphs/', include(urls_graphs)),
     url(r'^accounts/', include(urls_accounts)),
     url(r'^features/', include(urls_features)),
     url(r'^checkout/', include(urls_checkout)),

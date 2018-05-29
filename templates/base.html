@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
     {% block head_js %} {% endblock %}
 </head>
 
@@ -41,8 +42,10 @@
                         </a>
                     </li>
                     <li><a href="{% url 'profile' %}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-                    <li><button type="button" class="btn btn-default navbar-btn btn-sm sign-user-btn"><a href="{% url 'logout' %}">Log Out</a></button></li>
+                    <li><a href="{% url 'logout' %}">Log Out</a></li>
                     {% else %}
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'graphs' %}">Community</a></li>
                     <li><a href="{% url 'register' %}">Register</a></li>
                     <li><a href="{% url 'login' %}">Log In</a></li>
                     {% endif %}
@@ -57,14 +60,10 @@
         </div>
     </div>
     {% endif %}
+    {% block homepages %} {% endblock %}
     <div class="container">
         {% block content %} {% endblock %}
     </div>
-    <footer>
-        <div class="container">
-            <p>Made by Code Institute bootcampers</p>
-        </div>
-    </footer>
 </body>
 
 </html>
