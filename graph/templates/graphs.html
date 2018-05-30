@@ -54,6 +54,12 @@
                         <canvas id="maxOfChart" width="400" height="400"></canvas>
                     </div>
                 </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="feature">
+                        <h4>Status</h4>
+                        <canvas id="statusOfChart" width="400" height="400"></canvas>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
@@ -69,10 +75,13 @@
         success: function(data) {
             labels1 = data.labels1
             labels2 = data.labels2
+            labels3 = data.labels3
             max_values_data = data.max_values
             default_data = data.default
+            bugs_feature_status = data.bugs_and_feature_status
             setChart()
             setMaxChart()
+            statusChart()
         },
         error: function(error_data) {
             console.log(error_data)
@@ -128,6 +137,46 @@
                 datasets: [{
                     label: 'Largest amount of upvotes on a bug/feature',
                     data: max_values_data,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    }
+
+    function statusChart() {
+        var ctx = document.getElementById("statusOfChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'polarArea',
+            data: {
+                labels: labels3,
+                datasets: [{
+                    label: 'Status of a bugs and features',
+                    data: bugs_feature_status,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',

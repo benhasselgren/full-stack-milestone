@@ -50,7 +50,7 @@ body {
     text-align: center;
 }
 
-/*CONTAINERS*/
+/*--------------------------------------------- CONTAINERS*/
 
 .container-wrapper--red {
     background-color: #59b4f3;
@@ -63,7 +63,6 @@ body {
 }
 
 .callout-container {
-    background: url("{% static 'media/unicorn-cover.jpg' %}") no-repeat center center fixed !important;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
