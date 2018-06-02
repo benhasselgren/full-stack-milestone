@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Bug
+from .models import Bug, BugComment
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -28,11 +28,11 @@ class TestViews(TestCase):
     def test_upvote_bug(self):
         admin = User(username="admin")
         admin.save()
-        bug = Bug(name="test", description="test", status="done", upvotes=0, views=0,  author=admin)
+        bug = Bug(name="test", description="test", author=admin)
         bug.save()
         
-        self.client.post("/bugs/upvote{0}/".format(bug.id))
+        page = self.client.post("/bugs/upvote{0}/".format(bug.id))
+        bug.refresh_from_db()
+        self.assertEqual(page.status_code, 302)
+        self.assertEqual(bug.upvotes, 1)
         
-        testBug = Bug(author=admin)
-        
-        self.assertEqual(testBug.upvotes, 1)
