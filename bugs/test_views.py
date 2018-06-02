@@ -5,6 +5,9 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class TestViews(TestCase):
+    def setUp(self):
+        user = User.objects.create_user(username='username', password='password')
+        self.client.login(username='username', password='password')
     def test_get_bugs_page(self):
         page = self.client.get("/bugs/")
         self.assertEqual(page.status_code, 200)
