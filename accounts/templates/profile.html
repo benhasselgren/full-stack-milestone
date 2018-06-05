@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 <div class="row">
-        <h3 >Welcome {{ user.username }} </h3>
+    <h3>Welcome {{ user.username }} </h3>
 </div>
 <div class="row bug-feature-buttons">
     <div class="col-xs-hidden col-sm-3 col-md-3 col-lg-3">
@@ -16,6 +16,7 @@
 
     </div>
 </div>
+{% if bugs %}
 <hr>
 <div class="row row-flex">
     <h5>Your bugs</h5>
@@ -45,6 +46,7 @@
             </div>
             {% endfor %}
         </div>
+        {% else %} {% endif %} {% if features %}
         <hr>
         <div class="row ">
             <h5>Your features</h5>
@@ -77,4 +79,4 @@
                 </div>
             </div>
         </div>
-        {% endblock %}
+        {% else %} {% endif %} {% endblock %}
