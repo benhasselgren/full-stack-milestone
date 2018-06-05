@@ -1,1 +1,1 @@
-web: gunicorn full-stack-milestone.wsgi:application
+web: gunicorn UnicornAttractor.wsgi:application
