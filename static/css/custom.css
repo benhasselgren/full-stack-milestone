@@ -103,6 +103,12 @@ body {
     width: 160px;
 }
 
+.btn--cta-modal {
+    font-weight: bold;
+    border-radius: 23px;
+    width: 100px;
+}
+
 .btn--red {
     color: #fff;
     background-color: #f05f40;
