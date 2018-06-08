@@ -24,6 +24,7 @@ from bugs import urls as urls_bugs
 from features import urls as urls_features
 from home.views import index
 from django.views import static
+from .settings import MEDIA_ROOT
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -35,4 +36,5 @@ urlpatterns = [
     url(r'^features/', include(urls_features)),
     url(r'^checkout/', include(urls_checkout)),
     url(r'^bugs/', include(urls_bugs)),
+    url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
 ]
