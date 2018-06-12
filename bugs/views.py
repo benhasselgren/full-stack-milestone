@@ -70,3 +70,9 @@ def add_or_edit_bug(request, pk=None):
     else:
         form = BugForm(instance=bug)
     return render(request, 'add_bug.html', {'form':form})
+    
+@login_required() 
+def delete_bug(request, pk):
+     bug =  get_object_or_404(Bug, pk=pk) 
+     bug.delete()
+     return redirect('profile')

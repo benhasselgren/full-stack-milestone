@@ -58,3 +58,9 @@ def add_or_edit_feature(request, pk=None):
     else:
         form = FeatureForm(instance=feature)
     return render(request, 'add_feature.html', {'form':form})
+    
+@login_required() 
+def delete_feature(request, pk):
+     feature =  get_object_or_404(Feature, pk=pk) 
+     feature.delete()
+     return redirect('profile')
